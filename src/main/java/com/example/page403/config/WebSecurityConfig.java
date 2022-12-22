@@ -19,6 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/admin", "/delete").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin();
@@ -28,7 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user")
-                .password(encoder().encode("user123"))
-                .authorities("USER");
+                .password(encoder().encode("userpassword"))
+                .authorities("USER")
+                .and()
+                .withUser("admin")
+                .password(encoder().encode("adminpassword"))
+                .authorities("ADMIN");
     }
 }
