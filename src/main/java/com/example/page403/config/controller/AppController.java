@@ -9,4 +9,14 @@ public class AppController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
+    @GetMapping("/delete")
+    public String delete() {
+        return "delete";
+    }
 }

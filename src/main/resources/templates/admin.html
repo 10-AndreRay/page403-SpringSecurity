@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+    <h1 th:inline>Welcome [[${#httpServletRequest.remoteUser}]]</h1>
+    <a th:href="@{/delete}">Delete website</a>
+</body>
+</html>
